@@ -1,11 +1,18 @@
 package br.com.andrecorp.projetofinal.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Entity
 @Table(name ="itmn032_agencia")
@@ -24,6 +31,10 @@ public class Agencia {
 	
 	@Column(name="hora_fim")
 	private int hora_fim;
+	
+	@OneToMany(mappedBy="agencia", cascade=CascadeType.ALL)
+	@JsonIgnoreProperties("agencia")
+	private List<Agendamento> listaAgendamentos;
 
 	public int getId() {
 		return id;
