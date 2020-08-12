@@ -24,13 +24,13 @@ public class Agencia {
 	private int id;
 	
 	@Column(name="nome_agencia")
-	private String nome_agencia;
+	private String nome;
 	
 	@Column(name="hora_inicio")
-	private int hora_inicio;
+	private int horaInicio;
 	
 	@Column(name="hora_fim")
-	private int hora_fim;
+	private int horaFim;
 	
 	@OneToMany(mappedBy="agencia", cascade=CascadeType.ALL)
 	@JsonIgnoreProperties("agencia")
@@ -44,27 +44,37 @@ public class Agencia {
 		this.id = id;
 	}
 
-	public String getNome_agencia() {
-		return nome_agencia;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNome_agencia(String nome_agencia) {
-		this.nome_agencia = nome_agencia;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public int getHora_inicio() {
-		return hora_inicio;
+	public int getHoraInicio() {
+		return horaInicio;
 	}
 
-	public void setHora_inicio(int hora_inicio) {
-		this.hora_inicio = hora_inicio;
+	public void setHoraInicio(int horaInicio) {
+		this.horaInicio = horaInicio;
 	}
 
-	public int getHora_fim() {
-		return hora_fim;
+	public int getHoraFim() {
+		return horaFim;
 	}
 
-	public void setHora_fim(int hora_fim) {
-		this.hora_fim = hora_fim;
+	public void setHoraFim(int horaFim) {
+		this.horaFim = horaFim;
 	}
+
+	public List<Agendamento> getListaAgendamentos() {
+		return listaAgendamentos;
+	}
+
+	public void setListaAgendamentos(List<Agendamento> listaAgendamentos) {
+		this.listaAgendamentos = listaAgendamentos;
+	}
+
+	
 }

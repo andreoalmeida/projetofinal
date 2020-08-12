@@ -23,16 +23,16 @@ public class Agendamento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "num_seq")
-	private int num_seq;
+	private int numSeq;
 
 	@Column(name = "nome_cli", length = 100)
-	private String nome_cli;
+	private String nomeCliente;
 
 	@Column(name = "email_cli", length = 100)
-	private String email_cli;
+	private String emailCliente;
 
 	@Column(name = "celular_cli", length = 20)
-	private String celuar_cli;
+	private String celularCliente;
 
 	@Column(name = "data_agendamento")
 
@@ -57,36 +57,36 @@ public class Agendamento {
 	@JsonIgnoreProperties("listaAgendamentos")
 	private Agencia agencia;
 
-	public int getNum_seq() {
-		return num_seq;
+	public int getNumSeq() {
+		return numSeq;
 	}
 
-	public void setNum_seq(int num_seq) {
-		this.num_seq = num_seq;
+	public void setNumSeq(int numSeq) {
+		this.numSeq = numSeq;
 	}
 
-	public String getNome_cli() {
-		return nome_cli;
+	public String getNomeCliente() {
+		return nomeCliente;
 	}
 
-	public void setNome_cli(String nome_cli) {
-		this.nome_cli = nome_cli;
+	public void setNomeCliente(String nomeCliente) {
+		this.nomeCliente = nomeCliente;
 	}
 
-	public String getEmail_cli() {
-		return email_cli;
+	public String getEmailCliente() {
+		return emailCliente;
 	}
 
-	public void setEmail_cli(String email_cli) {
-		this.email_cli = email_cli;
+	public void setEmailCliente(String emailCliente) {
+		this.emailCliente = emailCliente;
 	}
 
-	public String getCeluar_cli() {
-		return celuar_cli;
+	public String getCelularCliente() {
+		return celularCliente;
 	}
 
-	public void setCeluar_cli(String celuar_cli) {
-		this.celuar_cli = celuar_cli;
+	public void setCelularCliente(String celuarCliente) {
+		this.celularCliente = celuarCliente;
 	}
 
 	public Date getDataAgendamento() {
@@ -120,4 +120,6 @@ public class Agendamento {
 	public void setAgencia(Agencia agencia) {
 		this.agencia = agencia;
 	}
+
+	
 }
