@@ -99,7 +99,7 @@ public class AgendamentoController {
 		LocalDate data = LocalDate.parse(dataAgendamento, fmt);
 		Agencia ag = new Agencia();
 		ag.setId(agencia);
-		return dao.findAllByNomeAgenciaAndDataAgendamento(ag,data);
+		return dao.findAllByAgenciaAndDataAgendamento(ag,data);
 	}
 
 }

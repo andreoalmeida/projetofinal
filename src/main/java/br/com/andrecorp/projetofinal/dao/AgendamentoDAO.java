@@ -26,5 +26,5 @@ public interface AgendamentoDAO extends CrudRepository<Agendamento, Integer> {
 
 	public ArrayList<Agendamento> findAllByNomeClienteAndDataAgendamento(String nome, LocalDate data);
 
-	public ArrayList<Agendamento> findAllByNomeAgenciaAndDataAgendamento(Agencia ag, LocalDate data);
+	public ArrayList<Agendamento> findAllByAgenciaAndDataAgendamento(Agencia ag, LocalDate data);
 }
