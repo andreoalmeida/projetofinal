@@ -1,11 +1,14 @@
 package br.com.andrecorp.projetofinal.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +24,7 @@ public class AgendamentoController {
 	@Autowired
 	AgendamentoDAO dao;
 
-	@GetMapping("/agendamentos/novo")
+	@PostMapping("/agendamentos/novo")
 
 	public ResponseEntity<Agendamento> inserirNovoAgendamento(@RequestBody Agendamento novo) {
 
@@ -53,6 +56,50 @@ public class AgendamentoController {
 		Agencia ag = new Agencia();
 		ag.setId(agencia);
 		return dao.findAllByAgencia(ag);
+	}
+	@GetMapping("/agendamentos/filtrarpordata")
+	public ArrayList<Agendamento> filtrarPorData(@RequestParam(name = "dataAgendamento") String dataAgendamento) {
+		System.out.println("Data = " + dataAgendamento);
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate data = LocalDate.parse(dataAgendamento, fmt);
+		return dao.findAllByDataAgendamento(data);
+	}
+	@GetMapping("/agendamentos/filtrartodos")
+	public ArrayList<Agendamento> filtrarPorData(@RequestParam(name = "nomecli") String nome,@RequestParam(name = "agencia") int agencia,@RequestParam(name = "dataAgendamento") String dataAgendamento){
+		System.out.println("nome do cliente = " + nome);
+		System.out.println("agencia = " + agencia);
+		System.out.println("Data = " + dataAgendamento);
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate data = LocalDate.parse(dataAgendamento, fmt);
+		Agencia ag = new Agencia();
+		ag.setId(agencia);
+		return dao.findAllByNomeClienteAndAgenciaAndDataAgendamento(nome,ag,data);
+	}
+	@GetMapping("/agendamentos/filtrarclienteagencia")
+	public ArrayList<Agendamento> filtrarPorData(@RequestParam(name = "nomecli") String nome,@RequestParam(name = "agencia") int agencia){
+		System.out.println("nome do cliente = " + nome);
+		System.out.println("agencia = " + agencia);
+		Agencia ag = new Agencia();
+		ag.setId(agencia);
+		return dao.findAllByNomeClienteAndAgencia(nome,ag);
+	}
+	@GetMapping("/agendamentos/filtrarclientedata")
+	public ArrayList<Agendamento> filtrarPorData(@RequestParam(name = "nomecli") String nome,@RequestParam(name = "dataAgendamento") String dataAgendamento){
+		System.out.println("nome do cliente = " + nome);
+		System.out.println("Data = " + dataAgendamento);
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate data = LocalDate.parse(dataAgendamento, fmt);
+		return dao.findAllByNomeClienteAndDataAgendamento(nome,data);
+	}
+	@GetMapping("/agendamentos/filtraragenciadata")
+	public ArrayList<Agendamento> filtrarPorData(@RequestParam(name = "agencia") int agencia,@RequestParam(name = "dataAgendamento") String dataAgendamento){
+		System.out.println("agencia = " + agencia);
+		System.out.println("Data = " + dataAgendamento);
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate data = LocalDate.parse(dataAgendamento, fmt);
+		Agencia ag = new Agencia();
+		ag.setId(agencia);
+		return dao.findAllByNomeAgenciaAndDataAgendamento(ag,data);
 	}
 
 }

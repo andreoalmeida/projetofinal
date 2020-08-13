@@ -1,6 +1,7 @@
 package br.com.andrecorp.projetofinal.model;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,18 +36,14 @@ public class Agendamento {
 	private String celularCliente;
 
 	@Column(name = "data_agendamento")
-
-	@Temporal(TemporalType.DATE)
 	@JsonFormat(pattern="dd/MM/yyyy", shape=JsonFormat.Shape.STRING)
 
-	private Date dataAgendamento;
+	private LocalDate dataAgendamento;
 
 	@Column(name = "hora_agendamento")
+	@JsonFormat(pattern="HH:mm", shape=JsonFormat.Shape.STRING)
 
-	@Temporal(TemporalType.TIME)
-	@JsonFormat(pattern="HH:mm", shape=JsonFormat.Shape.STRING, timezone ="America/Sao_Paulo")
-
-	private Date horaAgendamento;
+	private LocalTime horaAgendamento;
 
 	@Column(name = "observacao", length = 255)
 
@@ -85,23 +82,23 @@ public class Agendamento {
 		return celularCliente;
 	}
 
-	public void setCelularCliente(String celuarCliente) {
-		this.celularCliente = celuarCliente;
+	public void setCelularCliente(String celularCliente) {
+		this.celularCliente = celularCliente;
 	}
 
-	public Date getDataAgendamento() {
+	public LocalDate getDataAgendamento() {
 		return dataAgendamento;
 	}
 
-	public void setDataAgendamento(Date dataAgendamento) {
+	public void setDataAgendamento(LocalDate dataAgendamento) {
 		this.dataAgendamento = dataAgendamento;
 	}
 
-	public Date getHoraAgendamento() {
+	public LocalTime getHoraAgendamento() {
 		return horaAgendamento;
 	}
 
-	public void setHoraAgendamento(Date horaAgendamento) {
+	public void setHoraAgendamento(LocalTime horaAgendamento) {
 		this.horaAgendamento = horaAgendamento;
 	}
 
@@ -121,5 +118,5 @@ public class Agendamento {
 		this.agencia = agencia;
 	}
 
-	
+
 }

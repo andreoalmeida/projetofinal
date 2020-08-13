@@ -17,7 +17,7 @@ public class AgenciaController {
 	@Autowired
 	AgenciaDAO dao;
 	
-	@GetMapping("/agencia")
+	@GetMapping("/agencias")
 	public ArrayList<Agencia> getAll(){
 		ArrayList<Agencia> lista;
 		lista =  dao.findAllByOrderByNome();

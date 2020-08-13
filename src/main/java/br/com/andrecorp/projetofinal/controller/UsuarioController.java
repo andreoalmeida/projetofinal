@@ -66,6 +66,7 @@ public class UsuarioController {
 		if (resultado != null) { 
 			// as senhas (do banco e enviadas no formulário) conferem?
 			if (resultado.getSenha().equals(dadosLogin.getSenha())) {
+				resultado.setSenha("************");
 				return ResponseEntity.ok(resultado);
 			}
 			else {

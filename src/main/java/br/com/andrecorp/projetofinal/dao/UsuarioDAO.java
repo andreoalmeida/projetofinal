@@ -1,7 +1,7 @@
 package br.com.andrecorp.projetofinal.dao;
 
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.web.bind.annotation.GetMapping;
+
 
 import br.com.andrecorp.projetofinal.model.Usuario;
 
